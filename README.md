@@ -1,4 +1,5 @@
 # Test Kumojin
+https://laraveldaily.com/post/laravel-8-vue-3-crud-composition-api
 
 ## Application de gestion d’événements
 
@@ -33,8 +34,22 @@ cd TestKumojin
 composer install
 cp .env.example .env
 php artisan key:generate
-
 php artisan serve 
+```
+
+## Créer une base de données avec le nom kumojin
+```
+create database kumojin;
+```
+
+## Démarrer le serveur
+```
+php artisan serve
+```
+
+## Seed des données
+```
+php artisan migrate:fresh --seed
 ```
 
 ## Version de Laravel: 8.83.25
