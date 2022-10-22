@@ -1,6 +1,14 @@
 # Test Kumojin
 
-https://laraveldaily.com/post/laravel-8-vue-3-crud-composition-api
+### Instructions pour Kumojin
+
+- J'ai créé un Pull request qui va réunnir les changements que j'ai fait pour le développpement à partir d'une
+  installation fraîche de Laravel
+    - [https://github.com/stephanpaquet/TestKumojin/pull/1/files](https://github.com/stephanpaquet/TestKumojin/pull/1/files)
+- Voir la section Installation pour vous permettre d'installer le projet en local
+    - Vas demander une version de php 7.4
+    - De créer une base de données au nom de **kumojin**
+    - J'ai pris autour de 10 heures pour réaliser ce qui est fait
 
 ## Application de gestion d’événements
 
