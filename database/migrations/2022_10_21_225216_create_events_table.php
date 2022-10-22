@@ -17,6 +17,7 @@ class CreateEventsTable extends Migration
             $table->id();
             $table->string('name', 32);
             $table->text('description');
+            $table->integer('timezone')->default(0);
             $table->dateTime('dateBegin');
             $table->dateTime('dateEnd');
             $table->timestamps();

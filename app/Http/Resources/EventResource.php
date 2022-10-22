@@ -2,7 +2,6 @@
 
 namespace App\Http\Resources;
 
-use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class EventResource extends JsonResource
@@ -10,8 +9,8 @@ class EventResource extends JsonResource
     /**
      * Transform the resource into an array.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return array|Arrayable|\JsonSerializable
+     * @param \Illuminate\Http\Request $request
+     * @return array
      */
     public function toArray($request)
     {
@@ -20,7 +19,10 @@ class EventResource extends JsonResource
             "name" => $this->name,
             "description" => $this->description,
             "dateBegin" => $this->dateBegin,
+            "dateBeginLocal" => $this->dateBeginLocal,
             "dateEnd" => $this->dateEnd,
+            "dateEndLocal" => $this->dateEndLocal,
+            "timezone" => $this->timezone,
         ];
     }
 }

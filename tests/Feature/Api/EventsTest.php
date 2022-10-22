@@ -15,12 +15,16 @@ class EventsTest extends TestCase
     /**
      * @return void
      */
-    public function test_can_get_all_properties(): void
+    public function test_can_get_all_events(): void
     {
-        $event = Event::factory()->create();
+        $event = Event::factory()->create([
+            "timezone" => -2,
+            "dateBegin" => "2022-12-01 22:00:00",
+        ]);
 
         $response = $this->getJson(route($this->routePrefix . 'index'));
         $response->assertOk();
+        $this->assertEquals("2022-12-01 20:00:00", $event->dateBeginLocal);
 
         $response->assertJson([
             'data' => [
@@ -28,10 +32,33 @@ class EventsTest extends TestCase
                     'id' => $event->id,
                     'name' => $event->name,
                     'description' => $event->description,
-                    'dateBegin' => $event->dateBegin->format('Y-m-d H:i:s'),
-                    'dateEnd' => $event->dateEnd->format('Y-m-d H:i:s'),
+                    'dateBegin' => $event->dateBegin,
+                    'dateBeginLocal' => $event->dateBeginLocal,
+                    'dateEnd' => $event->dateEnd,
+                    'dateEndLocal' => $event->dateEndLocal,
                 ]
             ]
         ]);
+    }
+
+    public function test_can_store_an_event()
+    {
+        $event = Event::factory()->make();
+        $response = $this->postJson(
+            route($this->routePrefix . 'store'),
+            $event->toArray()
+        );
+
+        $response->assertStatus(201);
+
+//        $this->assertJson([
+//            'data' => ['name' => $event->name]
+//        ]);
+
+
+//        $this->assertDatabaseHas(
+//            'events',
+//            $event->toArray()
+//        );
     }
 }

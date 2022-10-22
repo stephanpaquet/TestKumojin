@@ -14,5 +14,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('events.index');
+});
+
+Route::get('/events', function () {
+    return view('events.index');
+});
+
+Route::get('/events/create', function () {
+    return view('events.create');
 });

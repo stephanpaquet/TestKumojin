@@ -1,40 +1,28 @@
 <template>
     <div class="container w-100 m-auto  mt-3">
-        <list-view :events="events" class="text-center"/>
+        <router-view></router-view>
+
+<!--        <list-view :events="events" class="text-center"/>-->
     </div>
 </template>
 
 <script>
 // import addItemForm from "./addItemForm";
-import listView from "./events/index";
+import createView from "./events/create";
+// import listView from "./events/index";
+
+// const routes = {
+//     '/': Home,
+//     '/about': About
+// }
 
 export default {
-    components: {
-        // addItemForm,
-        listView
-    },
+    // components: {
+    //     // addItemForm,
+    //     listView
+    // },
 
-    data: function () {
-        return {
-            events: []
-        };
-    },
-    methods: {
-        getEvents() {
-            axios
-                .get("api/events")
-                .then(res => {
-                    console.log(res.data)
-                    this.events = res.data.data;
-                })
-                .catch(error => {
-                    console.log(error);
-                });
-        }
-    },
-    created() {
-        this.getEvents();
-    }
+
 };
 </script>
 
