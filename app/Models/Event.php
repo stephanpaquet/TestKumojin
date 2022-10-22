@@ -17,26 +17,38 @@ class Event extends Model
      * @param $value
      * @return string
      */
-    public function getDateBeginLocalAttribute($value)
+    public function getDateBeginLocalAttribute($value): string
     {
         return Carbon::createFromDate($this->dateBegin)
             ->addHour($this->timezone)
             ->toDateTimeString();
     }
 
-    public function setDateBeginAttribute($value)
+    /**
+     * @param $value
+     * @return void
+     */
+    public function setDateBeginAttribute($value): void
     {
         $this->attributes['dateBegin'] = self::GetDate($value);
     }
 
-    public function getDateEndLocalAttribute($value)
+    /**
+     * @param $value
+     * @return string
+     */
+    public function getDateEndLocalAttribute($value): string
     {
         return Carbon::createFromDate($this->dateEnd)
             ->addHour($this->timezone)
             ->toDateTimeString();
     }
 
-    public function setDateEndAttribute($value)
+    /**
+     * @param $value
+     * @return void
+     */
+    public function setDateEndAttribute($value): void
     {
         $this->attributes['dateEnd'] = self::GetDate($value);
 

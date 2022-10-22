@@ -42,6 +42,8 @@ php artisan key:generate
 npm install
 npm run production
 
+php artisan migrate:fresh --seed
+
 php artisan serve 
 ```
 
@@ -77,7 +79,8 @@ Pour ce qui est d'avoir une date et heure d'événement selon un certain timezon
 
 - J'ai choisi d'insérer la date et heure dans le timezone UTC
 - Et d'ajouter une colonne timezone avec un nombre soit négatif ou positif selon le timezone de l'événement
-- Par la suite on utilise un **accesssor** dans le model, qui va soit soustraire ou additionner le nombre d'heures selon la valeur de
+- Par la suite on utilise un **accesssor** dans le model, qui va soit soustraire ou additionner le nombre d'heures selon
+  la valeur de
   son timezone
 - Il faudra que l'heure du serveur de l'application soit en UTC bien sûr
 - Le test unitaire prend en compte cette logique
