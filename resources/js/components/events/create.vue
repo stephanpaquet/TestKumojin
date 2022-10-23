@@ -91,6 +91,7 @@ export default {
             axios
                 .post("api/events", this.event)
                 .then(res => {
+                    this.$toast.success("L'événement à été créé");
                     this.$router.push({name: 'list'})
                 })
                 .catch(error => {
