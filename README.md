@@ -6,18 +6,19 @@
 
 ### Instructions pour Kumojin
 
-- J'ai créé un Pull request qui va réunir les changements que j'ai fait pour le développpement à partir d'une
+- J'ai créé un Pull request qui va réunir les changements que j'ai fait pour le développement à partir d'une
   installation fraîche de Laravel
     - [https://github.com/stephanpaquet/TestKumojin/pull/1/files](https://github.com/stephanpaquet/TestKumojin/pull/1/files)
 - Voir la section Installation pour vous permettre d'installer le projet en local
-    - Vas demander une version de php 7.4
+    - Demande une version de php 7.4
     - De créer une base de données au nom de **kumojin**
-    - J'ai pris autour de 10 heures pour réaliser ce qui est fait
+    - J'ai pris autour de 10 heures pour faire le test
     - J'ai créé des tests unitaires pour l'API et la validation
     - J'ai ajouté la validation pour :
         - les champs requis,
         - la longueur du champ name
         - et que la date de début soit plus petite que la date de fin
+        - range pour les valeurs du timezone
 
 #### Gestion du Timezone
 
