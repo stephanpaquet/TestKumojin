@@ -27,7 +27,8 @@ class EventRequest extends FormRequest
             'name' => ['required', 'max:32'],
             'description' => ['required'],
             'dateBegin' => ['required', 'date', 'before_or_equal:dateEnd'],
-            'dateEnd' => ['required']
+            'dateEnd' => ['date', 'required'],
+            'timezone' => ['numeric', 'gte:-11', 'max:12']
         ];
     }
 }

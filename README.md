@@ -1,12 +1,12 @@
 # Test Kumojin
 
 ## TODO
-- considérer le timezone à la sauvegarde d'une événement
-- Ajouter un menut déroulant pour la sélection d'une timezone
+- considérer le timezone à la sauvegarde d'un événement
+- Ajouter un menu déroulant pour la sélection d'une timezone
 
 ### Instructions pour Kumojin
 
-- J'ai créé un Pull request qui va réunnir les changements que j'ai fait pour le développpement à partir d'une
+- J'ai créé un Pull request qui va réunir les changements que j'ai fait pour le développpement à partir d'une
   installation fraîche de Laravel
     - [https://github.com/stephanpaquet/TestKumojin/pull/1/files](https://github.com/stephanpaquet/TestKumojin/pull/1/files)
 - Voir la section Installation pour vous permettre d'installer le projet en local

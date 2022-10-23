@@ -21,19 +21,30 @@
         <form>
             <div class="form-group">
                 <label for="name">Nom de l'événement</label>
-                <input v-model="event.name" type="name" class="form-control" id="name">
+                <input v-model="event.name" type="text" class="form-control" id="name">
             </div>
             <div class="form-group">
                 <label for="description">Description</label>
-                <textarea v-model="event.description" class="form-control" id="name"/>
+                <textarea v-model="event.description" class="form-control" id="description"/>
             </div>
             <div class="form-group">
-                <label for="date">Date de début de l'événement</label>
-                <datepicker class="form-control" v-model="event.dateBegin" format="yyyy-MM-dd"></datepicker>
+                <label for="dateBegin">Date de début de l'événement</label>
+                <datepicker class="form-control" v-model="event.dateBegin" format="yyyy-MM-dd"
+                            id="dateBegin"></datepicker>
             </div>
             <div class="form-group">
-                <label for="date">Date de fin de l'événement</label>
-                <datepicker class="form-control" v-model="event.dateEnd" format="yyyy-MM-dd"></datepicker>
+                <label for="dateEnd">Date de fin de l'événement</label>
+                <datepicker class="form-control" v-model="event.dateEnd" format="yyyy-MM-dd" id="dateEnd"></datepicker>
+            </div>
+
+            <div class="form-group">
+                <label for="timezone">Timezone</label>
+
+                <select v-model="event.timezone" class="form-select" id="timezone">
+                    <option v-for="timezone in timezoneValues">
+                        {{ timezone }}
+                    </option>
+                </select>
             </div>
 
             <button class="btn btn-primary mt-4  float-end" @click="postEvent">
@@ -43,8 +54,6 @@
                 Annuler
             </router-link>
         </form>
-
-
     </div>
 </template>
 
@@ -64,8 +73,14 @@ export default {
                 description: '',
                 dateBegin: '',
                 dateEnd: '',
+                timezone: 0
             },
             validationErrors: []
+        }
+    },
+    computed: {
+        timezoneValues() {
+            return _.range(-11, 13)
         }
     },
     methods: {

@@ -10,7 +10,7 @@ class Event extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'description', 'dateBegin', 'dateEnd'];
+    protected $fillable = ['name', 'description', 'dateBegin', 'dateEnd', 'timezone'];
 
     /**
      * Adjust the event date according to its timezone

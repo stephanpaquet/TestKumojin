@@ -30,13 +30,13 @@ class EventRequestTest extends TestCase
         $validatedField = 'name';
         $brokenRule = Str::random(33);
 
-        $property = Event::factory()->make([
+        $event = Event::factory()->make([
             $validatedField => $brokenRule
         ]);
 
         $this->postJson(
             route($this->routePrefix . 'store'),
-            $property->toArray()
+            $event->toArray()
         )->assertJsonValidationErrors($validatedField);
     }
 
@@ -89,6 +89,36 @@ class EventRequestTest extends TestCase
     {
         $validatedField = 'dateEnd';
         $brokenRule = null;
+
+        $event = Event::factory()->make([
+            $validatedField => $brokenRule
+        ]);
+
+        $this->postJson(
+            route($this->routePrefix . 'store'),
+            $event->toArray()
+        )->assertJsonValidationErrors($validatedField);
+    }
+
+    public function test_timezone_must_be_gte_less_11()
+    {
+        $validatedField = 'timezone';
+        $brokenRule = -12;
+
+        $event = Event::factory()->make([
+            $validatedField => $brokenRule
+        ]);
+
+        $this->postJson(
+            route($this->routePrefix . 'store'),
+            $event->toArray()
+        )->assertJsonValidationErrors($validatedField);
+    }
+
+    public function test_timezone_must_be_lte_12()
+    {
+        $validatedField = 'timezone';
+        $brokenRule = 13;
 
         $event = Event::factory()->make([
             $validatedField => $brokenRule

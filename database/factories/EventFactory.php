@@ -16,7 +16,7 @@ class EventFactory extends Factory
         return [
             'name' => implode(' ', $this->faker->words(2)),
             'description' => $this->faker->paragraph,
-            'timezone' => $this->faker->numberBetween(-11, +12),
+            'timezone' => $this->faker->numberBetween(-11, 12),
             'dateBegin' => $this->faker
                 ->dateTimeBetween('-1 week', '+1 week')
                 ->format('Y-m-d H:i:s'),
