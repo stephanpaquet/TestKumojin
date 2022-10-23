@@ -15,11 +15,6 @@ class EventController extends Controller
         return EventResource::collection(Event::all());
     }
 
-    public function create()
-    {
-        return view('events.create');
-    }
-
     public function store(EventRequest $request)
     {
         return response()->json([

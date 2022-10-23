@@ -17,10 +17,4 @@ Route::get('/', function () {
     return view('events.index');
 });
 
-Route::get('/events', function () {
-    return view('events.index');
-});
 
-Route::get('/events/create', function () {
-    return view('events.create');
-});
