@@ -87,7 +87,6 @@ export default {
         postEvent() {
             this.errors = [];
 
-            this.event.dateBegin = this.event.dateBegin ? this.event.dateBegin : ''
             axios
                 .post("api/events", this.event)
                 .then(res => {

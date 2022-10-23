@@ -50,15 +50,5 @@ class EventsTest extends TestCase
         );
 
         $response->assertStatus(201);
-
-//        $this->assertJson([
-//            'data' => ['name' => $event->name]
-//        ]);
-
-
-//        $this->assertDatabaseHas(
-//            'events',
-//            $event->toArray()
-//        );
     }
 }

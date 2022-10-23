@@ -57,7 +57,6 @@ export default {
             axios
                 .get("api/events")
                 .then(res => {
-                    console.log(res.data)
                     this.events = res.data.data;
                 })
                 .catch(error => {
