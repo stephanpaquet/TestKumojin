@@ -1,9 +1,5 @@
 # Test Kumojin
 
-## TODO
-- considérer le timezone à la sauvegarde d'un événement
-- Ajouter un menu déroulant pour la sélection d'une timezone
-
 ### Instructions pour Kumojin
 
 - J'ai créé un Pull request qui va réunir les changements que j'ai fait pour le développement à partir d'une
