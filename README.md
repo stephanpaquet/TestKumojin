@@ -1,64 +1,102 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Test Kumojin
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+### Instructions pour Kumojin
 
-## About Laravel
+- J'ai créé un Pull request qui va réunir les changements que j'ai fait pour le développement à partir d'une
+  installation fraîche de Laravel
+    - [https://github.com/stephanpaquet/TestKumojin/pull/1/files](https://github.com/stephanpaquet/TestKumojin/pull/1/files)
+- Voir la section Installation pour vous permettre d'installer le projet en local
+    - Demande une version de php 7.4
+    - De créer une base de données au nom de **kumojin**
+    - J'ai pris autour de 10 heures pour faire le test
+    - J'ai créé des tests unitaires pour l'API et la validation
+    - J'ai ajouté la validation pour :
+        - les champs requis,
+        - la longueur du champ name
+        - et que la date de début soit plus petite que la date de fin
+        - range pour les valeurs du timezone
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+#### Gestion du Timezone
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Pour ce qui est d'avoir une date et heure d'événement selon un certain timezone du lieu de l'événement.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- J'ai choisi d'insérer la date et heure dans le timezone UTC
+- Et d'ajouter une colonne timezone avec un nombre soit négatif ou positif selon le timezone de l'événement
+- Par la suite on utilise un **accesssor** dans le model, qui va soit soustraire ou additionner le nombre d'heures selon
+  la valeur de
+  son timezone
+- Il faudra que l'heure du serveur de l'application soit en UTC bien sûr
+- Le test unitaire prend en compte cette logique
 
-## Learning Laravel
+## Application de gestion d’événements
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### L’objectif est d’avoir une application basique de gestion des événements.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Un événement est caractérisé par son
 
-## Laravel Sponsors
+- nom (32 caractères maximum),
+- sa description et
+- ses dates de début
+- et de fin.
+- Attention, les événements peuvent avoir lieu n’importe où dans le monde, n’oublie pas de prendre en compte la
+  timezone.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+### Le back-end est une API REST qui retourne du JSON. Il doit gérer les opérations suivantes :
 
-### Premium Partners
+- Créer un événement
+- Lister les événements
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+### Le front-end doit permettre de :
 
-## Contributing
+- Créer un événement
+- Lister les événements (optionnel)
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Considère que cette application est la base d’un nouveau produit et qu’il faut qu’elle soit codée dans les règles de
+l’art
+(intégration de tests pertinents sur les variables pour le back et le front).
+Tu peux bien entendu faire des compromis sur l’implémentation mais sois prêt à en discuter et à les justifier.
 
-## Code of Conduct
+## Installation
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```
+git clone git@github.com:stephanpaquet/TestKumojin.git
+cd TestKumojin
+composer install
+cp .env.example .env
+php artisan key:generate
 
-## Security Vulnerabilities
+npm install
+npm run production
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+php artisan migrate:fresh --seed
 
-## License
+php artisan serve 
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Créer une base de données avec le nom kumojin
+
+```
+create database kumojin;
+```
+
+## Démarrer le serveur
+
+```
+php artisan serve
+```
+
+## Seed des données
+
+```
+php artisan migrate:fresh --seed
+```
+
+## Version de Laravel: 8.83.25
+
+## Rouler les tests
+
+```
+./vendor/bin/phpunit --testdox
+```
+
+
